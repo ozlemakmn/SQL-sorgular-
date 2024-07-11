@@ -39,3 +39,25 @@ select * from country where country length(country) >=6 and country Like '%n'
 select TOP 4 * from film where title ILIKE '%T%'
 /*12.film tablosunda bulunan tüm sütunlardaki verilerden title 'C' karakteri ile başlayan ve uzunluğu (length) 90 dan büyük olan ve rental_rate 2.99 olan verileri sıralayınız.*/
 select from film where title like 'C%'and length(title) >90 and title where rental_rate = 2.99 
+
+--13.film tablosunda bulunan replacement_cost sütununda bulunan birbirinden farklı değerleri sıralayınız.
+select  distinct replacement_cost from film
+
+--14.film tablosunda bulunan replacement_cost sütununda birbirinden farklı kaç tane veri vardır?
+select Count (distinct replacement_cost) from film
+
+--15.film tablosunda bulunan film isimlerinde (title) kaç tanesini T karakteri ile başlar ve aynı zamanda rating 'G' ye eşittir?
+select count(*) from film like 'T%' and rating like ='G'
+
+--16.country tablosunda bulunan ülke isimlerinden (country) kaç tanesi 5 karakterden oluşmaktadır?
+select count(*) from country where length (name ) =5
+
+--17.city tablosundaki şehir isimlerinin kaç tanesi 'R' veya r karakteri ile biter?
+select count(*) from city where city like '%R' or city like '%r' 
+
+--18.film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en uzun (length) 5 filmi sıralayınız.
+select * from film where title like'%n' order by length desc limit=5
+--19.film tablosunda bulunan ve film ismi (title) 'n' karakteri ile biten en kısa (length) ikinci(6,7,8,9,10) 5 filmi(6,7,8,9,10) sıralayınız.
+select * from film where title like'%n' order by length desc offset 5 limit=5
+--20.customer tablosunda bulunan last_name sütununa göre azalan yapılan sıralamada store_id 1 olmak koşuluyla ilk 4 veriyi sıralayınız.
+select * from customer where store_id='1' order by last_name desc limit=4
